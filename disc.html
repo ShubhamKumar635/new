@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shubh - Dishes</title>
+  <style>
+    /* Global Styles & Variables */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Playfair Display', serif;
+    }
+    :root {
+      --primary-red: #C41E3A;
+      --golden: #D4AF37;
+      --pure-white: #FFFFFF;
+      --soft-grey: #F5F5F5;
+      --deep-navy: #002366;
+    }
+    body {
+      background: var(--soft-grey);
+    }
+    /* Navigation (Simple version for internal pages) */
+    nav {
+      background: var(--pure-white);
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+      z-index: 1000;
+    }
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--primary-red);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .logo::before {
+      content: '✦';
+      color: var(--golden);
+    }
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+    }
+    .nav-links a {
+      color: var(--deep-navy);
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s;
+      position: relative;
+    }
+    .nav-links a:hover {
+      color: var(--primary-red);
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -5px;
+      left: 0;
+      background: var(--primary-red);
+      transition: width 0.3s;
+    }
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+    /* Dishes Gallery Section */
+    .container {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 2rem;
+    }
+    h1 {
+      text-align: center;
+      font-size: 3rem;
+      margin-bottom: 2rem;
+      color: var(--deep-navy);
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2.5rem;
+    }
+    .card {
+      background: var(--pure-white);
+      border-radius: 15px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+      position: relative;
+    }
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    }
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+    .card-content {
+      padding: 1.5rem;
+    }
+    .card-content h3 {
+      color: var(--deep-navy);
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+    .card-content p {
+      color: #666;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
+    .price {
+      color: var(--primary-red);
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+    }
+    /* Controls for quantity */
+    .controls {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+    .controls button {
+      background: var(--pure-white);
+      color: var(--deep-navy);
+      border: 1px solid var(--deep-navy);
+      padding: 0.3rem 0.8rem;
+      cursor: pointer;
+      font-size: 1rem;
+      margin: 0 0.5rem;
+      border-radius: 5px;
+      transition: background 0.3s;
+    }
+    .controls button:hover {
+      background: var(--soft-grey);
+    }
+    .controls .quantity {
+      font-size: 1.2rem;
+      min-width: 20px;
+      text-align: center;
+    }
+    /* Add to Cart Button */
+    .add-to-cart {
+      background: var(--primary-red);
+      color: var(--pure-white);
+      border: none;
+      padding: 0.8rem 1.5rem;
+      cursor: pointer;
+      font-size: 1rem;
+      border-radius: 5px;
+      transition: background 0.3s;
+      display: block;
+      width: 100%;
+      margin-top: 1rem;
+    }
+    .add-to-cart:hover {
+      background: var(--golden);
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav>
+    <div class="nav-container">
+      <a style="text-decoration: none;" href="http://127.0.0.1:5500/home.html"><div class="logo">Shubh</div></a> 
+      <div class="nav-links">
+        <a href="/home.html">Home</a>
+        <a href="http://127.0.0.1:5500/home.html#about">About</a>
+        <a href="http://127.0.0.1:5500/home.html#service">Service</a>
+        <a href="/home.html">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Dishes Gallery Section -->
+  <div class="container">
+    <h1>Our Dishes</h1>
+    <div class="gallery">
+      <!-- Dish Card 1 -->
+      <div class="card">
+        <img src="/pexels-cristian-rojas-7613556.jpg" alt="Signature Thali">
+        <div class="card-content">
+          <h3>Signature Thali</h3>
+          <p>
+            A harmonious blend of regional flavors featuring hand-picked spices and traditional cooking methods.
+          </p>
+          <p class="price">₹499</p>
+          <div class="controls">
+            <button class="minus">-</button>
+            <span class="quantity">1</span>
+            <button class="plus">+</button>
+          </div>
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+      <!-- Dish Card 2 -->
+      <div class="card">
+        <img src="/pexels-rohanbatra-20642812.jpg" alt="Spicy Biryani">
+        <div class="card-content">
+          <h3>Spicy Biryani</h3>
+          <p>
+            Aromatic basmati rice layered with succulent meat and spices from Hyderabad.
+          </p>
+          <p class="price">₹599</p>
+          <div class="controls">
+            <button class="minus">-</button>
+            <span class="quantity">1</span>
+            <button class="plus">+</button>
+          </div>
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+      <!-- Dish Card 3 -->
+      <div class="card">
+        <img src="/pexels-vince-2147491.jpg" alt="Margherita Pizza">
+        <div class="card-content">
+          <h3>Margherita Pizza</h3>
+          <p>
+            Classic Italian pizza with fresh tomatoes, basil, and mozzarella.
+          </p>
+          <p class="price">₹799</p>
+          <div class="controls">
+            <button class="minus">-</button>
+            <span class="quantity">1</span>
+            <button class="plus">+</button>
+          </div>
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+      <!-- Dish Card 4 -->
+      <div class="card">
+        <img src="/pexels-nadin-sh-78971847-17312774.jpg" alt="Sushi Platter">
+        <div class="card-content">
+          <h3>Sushi Platter</h3>
+          <p>
+            A selection of fresh sushi and sashimi, crafted with precision and artistry.
+          </p>
+          <p class="price">₹899</p>
+          <div class="controls">
+            <button class="minus">-</button>
+            <span class="quantity">1</span>
+            <button class="plus">+</button>
+          </div>
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+      <!-- Dish Card 5 -->
+      <div class="card">
+        <img src="/pexels-nadin-sh-78971847-12918198.jpg" alt="Pasta Carbonara">
+        <div class="card-content">
+          <h3>Pasta Carbonara</h3>
+          <p>
+            Creamy pasta with pancetta, parmesan, and black pepper – a classic Italian delight.
+          </p>
+          <p class="price">₹699</p>
+          <div class="controls">
+            <button class="minus">-</button>
+            <span class="quantity">1</span>
+            <button class="plus">+</button>
+          </div>
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+      <!-- Dish Card 6 -->
+      <div class="card">
+        <img src="/pexels-anil-sharma-2149101452-30749027.jpg" alt="Tandoori Chicken">
+        <div class="card-content">
+          <h3>Tandoori Chicken</h3>
+          <p>
+            Juicy chicken marinated in yogurt and spices, grilled to perfection in a tandoor.
+          </p>
+          <p class="price">₹649</p>
+          <div class="controls">
+            <button class="minus">-</button>
+            <span class="quantity">1</span>
+            <button class="plus">+</button>
+          </div>
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+ 
+</body>
+</html>
